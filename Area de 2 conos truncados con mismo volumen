@@ -19,13 +19,13 @@ void calcularValores(double distancia, double R) {
     double valor2 = R;
     double valor3 = distancia / 2;
     double v, vt, A, g, At;
-
+    #define PI 3.14159265359
     incognita = (valor3 * valor2) / valor1;
     h = distancia / 2;
-    v = (h * M_PI / 3) * ((incognita * incognita) + (R * R) + (R * incognita));
+    v = (h * PI / 3) * ((incognita * incognita) + (R * R) + (R * incognita));
     vt = v * 2;
     g = sqrt((h * h) + ((R - incognita) * (R - incognita)));
-    A = M_PI * ((R * R) + (incognita * incognita) + (g * (R + incognita)));
+    A = PI * ((R * R) + (incognita * incognita) + (g * (R + incognita)));
     At = A * 2;
 
     printf("H: %.2lf\n", distancia);
