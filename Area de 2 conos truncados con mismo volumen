@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <math.h>
+
+double calcularDistancia(double x1, double y1, double z1, double x2, double y2, double z2) {
+    double distancia = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2));
+    double R = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2));
+    return distancia;
+}
+
+double calcularR(double x1, double y1, double z1, double x2, double y2, double z2) {
+    double R = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2));
+    return R;
+}
+
+void calcularValores(double distancia, double R) {
+    double h = distancia / 2;
+    double incognita = distancia / 2;
+    double valor1 = distancia;
+    double valor2 = R;
+    double valor3 = distancia / 2;
+    double v, vt, A, g, At;
+
+    incognita = (valor3 * valor2) / valor1;
+    h = distancia / 2;
+    v = (h * M_PI / 3) * ((incognita * incognita) + (R * R) + (R * incognita));
+    vt = v * 2;
+    g = sqrt((h * h) + ((R - incognita) * (R - incognita)));
+    A = M_PI * ((R * R) + (incognita * incognita) + (g * (R + incognita)));
+    At = A * 2;
+
+    printf("H: %.2lf\n", distancia);
+    printf("R: %.2lf\n", R);
+    printf("h: %.2lf\n", h);
+    printf("r: %.2lf\n", incognita);
+    printf("v: %.2lf\n", v);
+    printf("vt: %.2lf\n", vt);
+    printf("g: %.2lf\n", g);
+    printf("A: %.2lf\n", A);
+    printf("At: %.2lf\n", At);
+}
+
+int main(int argc, char *argv[]) {
+
+    double x1, y1, z1;
+    double x2, y2, z2;
+    double x3, y3, z3;
+
+    printf("Ingresar las coordendas p1 (x, y, z):\n");
+    scanf("%lf %lf %lf", &x1, &y1, &z1);
+
+    printf("Ingresar las coordendas p2 (x, y, z):\n");
+    scanf("%lf %lf %lf", &x2, &y2, &z2);
+
+    printf("Ingresar las coordendas p3 (x, y, z):\n");
+    scanf("%lf %lf %lf", &x3, &y3, &z3);
+
+    double distancia = calcularDistancia(x1, y1, z1, x3, y3, z3);
+    double R = calcularR(x1, y1, z1, x2, y2, z2);
+
+    calcularValores(distancia, R);
+
+    return 0;
+}
