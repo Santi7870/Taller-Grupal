@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+
+    char nombre[50]="Juan";
+    int edad=40;
+
+    char nombreleido[50]="Juan";
+    int edadleida=40;
+
+    char cadena[50];
+
+    
+    FILE *archivo;
+    archivo=fopen("nombres","w+");
+    //W = crear un archivo de texto
+    //r=LEE ARCHIVOS YA CREADOS PERO NO CREA
+
+    if (archivo==NULL) {
+        printf("No se puede crear");
+    }
+
+    fputs("Se escribe una linea en el archivo\n",archivo);
+    //fputs ingresa una linea entera
+    fprintf(archivo,"%s %d\n",nombre,edad);
+
+    rewind(archivo);
+
+    fgets(cadena,50,archivo);
+    fscanf(archivo,"%s %d", &nombreleido,&edadleida);
+
+    printf("%s\n", cadena);
+    printf("%s %d\n", nombreleido,edadleida);
+
+    fclose(archivo);
+
+
+
+
+    return 0;
+}   
