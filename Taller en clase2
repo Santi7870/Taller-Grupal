@@ -106,7 +106,7 @@ void facturarServicios(int *idMascota) {
         }
     }
 
-    if (mascotaEncontrada==0) {
+    if (mascotaEncontrada == 0) {
         printf("No se encontró la mascota con el ID ingresado.\n");
         return;
     }
@@ -119,11 +119,9 @@ void facturarServicios(int *idMascota) {
     printf("Raza de la mascota: %s\n", razaMascota[indice2Mascota]);
     printf("Edad de la mascota: %d\n", edadMascota[indice2Mascota]);
     printf("Nombre del dueño: %s\n", nombreDueno[indice2Mascota]);
-    printf("ID de los servicios elegidos:\n");
 
     for (int i = 0; i < cantidadServicios[indice2Mascota]; i++) {
         int servicioIndice = idServicio[indice2Mascota][i];
-        printf("- %d: %s - Precio: %.2f$\n", servicioIndice + 1, nombreServicio[servicioIndice], precioServicio[servicioIndice]);
         precioTotal += precioServicio[servicioIndice];
     }
 
